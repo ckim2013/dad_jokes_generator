@@ -9,7 +9,7 @@ const JokeGenerateView = (props) => {
     <button
       onClick={ submitRequest }
     >
-      Fetch API
+      Generate
     </button>  
   );
 };

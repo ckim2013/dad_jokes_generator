@@ -1,6 +1,6 @@
 class MarkovGenerator
-  ORDER = 5
-  LENGTH_OF_JOKE = 200
+  ACCURACY = 5
+  MAX_LENGTH_OF_JOKE = 200
 
   def initialize(existing_jokes:)
     @existing_jokes = existing_jokes
@@ -20,10 +20,10 @@ class MarkovGenerator
       joke = existing_joke.joke
       i = 0
 
-      while i <= joke.length - ORDER
-        gram = joke[i..i + ORDER - 1]
+      while i <= joke.length - ACCURACY
+        gram = joke[i..i + ACCURACY - 1]
         @beginnings << gram if i == 0
-        @ngrams[gram] += [joke[i + ORDER]]
+        @ngrams[gram] += [joke[i + ACCURACY]]
 
         i += 1
       end
@@ -34,7 +34,7 @@ class MarkovGenerator
     current_gram = @beginnings.sample
     string = current_gram
 
-    LENGTH_OF_JOKE.times do |i|
+    MAX_LENGTH_OF_JOKE.times do |i|
       next_character = @ngrams[current_gram].sample
       break unless next_character
       string += next_character

@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-  entry: './app/javascript/frontend/dad_jokes_generator.jsx',
+  entry: './app/javascript/frontend/DadJokesGenerator.jsx',
   output: {
     path: path.resolve(__dirname, 'app', 'javascript', 'packs'),
     filename: 'bundle.js',
