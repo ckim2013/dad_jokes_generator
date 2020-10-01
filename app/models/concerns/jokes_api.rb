@@ -1,6 +1,8 @@
 module JokesApi
   URL = 'https://icanhazdadjoke.com'.freeze
 
+  private
+
   def fetch_dad_joke(cue_word:)
     url = cue_word.empty? ? URL : "#{ URL }/search?term=#{ cue_word }"
     uri = URI(url)

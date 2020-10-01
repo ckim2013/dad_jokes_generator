@@ -14,9 +14,6 @@ const JokeGeneratorView = (props) => {
   
   return (
     <div>
-      <JokeDisplay
-        joke={ joke }
-      />
       <JokeCue
         cueWord={ cueWord }
         updateCueWord={ updateCueWord }
@@ -25,6 +22,9 @@ const JokeGeneratorView = (props) => {
         cueWord={ cueWord }
         updateJoke={ updateJoke }
       /> 
+      <JokeDisplay
+        joke={ joke }
+      />
     </div>
   );
 }
