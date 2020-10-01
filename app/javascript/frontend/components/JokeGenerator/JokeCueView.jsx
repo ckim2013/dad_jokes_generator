@@ -9,6 +9,7 @@ const JokeCueView = (props) => {
   return (
     <div>
       <input 
+        placeholder='Cue Word'
         type='text'
         onChange={ updateCueWord }
         value={ cueWord }

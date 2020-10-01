@@ -8,7 +8,7 @@ export default class JokeGeneratorContainer extends Component {
       
       this.state = {
         cueWord: '',
-        joke: "",
+        joke: '',
       };
       
       this.updateCueWord = this.updateCueWord.bind(this);
