@@ -14,7 +14,7 @@ class DadJokes < ApplicationRecord
 
   def generate_random_joke(accuracy:)
     existing_jokes = if cue_word.empty?
-                      Rails.cache.fetch('existing_jokes', expires_in: 10.minutes) do
+                      Rails.cache.fetch('existing_jokes', expires_in: 5.minutes) do
                         DadJokes.order('RANDOM()').limit(100).to_a
                       end
                     else
