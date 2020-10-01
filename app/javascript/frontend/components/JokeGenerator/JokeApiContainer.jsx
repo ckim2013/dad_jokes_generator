@@ -5,16 +5,18 @@ import JokeApiView from './JokeApiView';
 export default class JokeApiContainer extends Component {
   constructor(props) {
     super(props);
+    
+    this.submitRequest = this.submitRequest.bind(this);
   }
+  
+  submitRequest() {
+    this.props.updateJoke('Is API working?');
+  };
 
   render() {
-    const { 
-      updateJoke
-    } = this.props;
-
     return (
       <JokeApiView 
-        updateJoke={ updateJoke }
+        submitRequest={ this.submitRequest }
       />
     );
   }

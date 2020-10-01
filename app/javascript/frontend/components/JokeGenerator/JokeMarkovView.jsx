@@ -2,11 +2,11 @@ import React from 'react';
 
 const JokeMarkovView = (props) => {
   const {
-    updateJoke,
+    submitRequest,
   } = props;
 
   return (
-    <button onClick={ () => updateJoke('Markoved!') }>
+    <button onClick={ submitRequest }>
       Fetch Markov
     </button>
   );

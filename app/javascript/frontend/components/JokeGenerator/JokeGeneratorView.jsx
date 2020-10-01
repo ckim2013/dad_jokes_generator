@@ -23,6 +23,7 @@ const JokeGeneratorView = (props) => {
         updateCueWord={ updateCueWord }
       />
       <JokeApi 
+        cueWord={ cueWord }
         updateJoke={ updateJoke }
       />  
       <JokeMarkov

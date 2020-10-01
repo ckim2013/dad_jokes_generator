@@ -2,12 +2,12 @@ import React from 'react';
 
 const JokeApiView = (props) => {
   const {
-    updateJoke,
+    submitRequest,
   } = props;
   
   return (
     <button
-      onClick={ () => updateJoke('APIed!') }
+      onClick={ submitRequest }
     >
       Fetch API
     </button>  

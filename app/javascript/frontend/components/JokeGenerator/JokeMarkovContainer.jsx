@@ -5,16 +5,18 @@ import JokeMarkovView from './JokeMarkovView';
 export default class JokeMarkovContainer extends Component {
   constructor(props) {
     super(props);
+    
+    this.submitRequest = this.submitRequest.bind(this);
+  }
+  
+  submitRequest() {
+    this.props.updateJoke('Is Markov working?');
   }
   
   render() {
-    const {
-      updateJoke,
-    } = this.props;
-    
     return (
       <JokeMarkovView 
-        updateJoke={ updateJoke }
+        submitRequest={ this.submitRequest }
       />
     );
   }
