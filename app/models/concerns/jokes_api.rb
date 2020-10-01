@@ -3,7 +3,7 @@ module JokesApi
 
   private
 
-  def fetch_dad_joke(cue_word:)
+  def fetch_dad_joke_via_api(cue_word:)
     url = cue_word.empty? ? URL : "#{ URL }/search?term=#{ cue_word }"
     uri = URI(url)
     req = Net::HTTP::Get.new(uri)

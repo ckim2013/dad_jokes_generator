@@ -4,11 +4,17 @@ class DadJokes < ApplicationRecord
   extend JokesApi
 
   def self.fetch_and_save_joke!(cue_word:)
-    joke = fetch_dad_joke(cue_word: cue_word)
-    create!(joke: joke)
+    joke = fetch_dad_joke_via_api(cue_word: cue_word)
+    find_or_create_by(joke: joke, cue_word: cue_word)
   end
 
   def generate_random_joke
-    MarkovGenerator.new(existing_jokes: DadJokes.all).generate_random_joke
+    existing_jokes = if cue_word.empty?
+                      DadJokes.order('RANDOM()').limit(100)
+                    else
+                      DadJokes.where(cue_word: cue_word).order('RANDOM()').limit(100)
+                    end
+
+    MarkovGenerator.new(existing_jokes: existing_jokes).generate_random_joke
   end
 end
