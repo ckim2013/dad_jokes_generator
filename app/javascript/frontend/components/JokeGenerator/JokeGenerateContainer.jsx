@@ -12,11 +12,12 @@ export default class JokeGenerateContainer extends Component {
   
   submitRequest() {
     const {
+      accuracy,
       cueWord,
       updateJoke,
     } = this.props;
     
-    axios.get(`/jokes/generate?cue_word=${ cueWord }`)
+    axios.get(`/jokes/generate?cue_word=${ cueWord }&accuracy=${ accuracy }`)
       .then(res => {
         updateJoke(res.data.joke);
       });

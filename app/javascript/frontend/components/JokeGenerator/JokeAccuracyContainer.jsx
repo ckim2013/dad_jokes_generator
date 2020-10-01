@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
 
-import JokeCueView from './JokeCueView';
+import JokeAccuracyView from './JokeAccuracyView';
 
-export default class JokeCueContainer extends Component {
+export default class JokeAccuracyContainer extends Component {
   constructor(props) {
     super(props);
   }
   
   render() {
     const {
+      accuracy, 
       onChange,
-      updateCueWord,
     } = this.props;
     
     return (
-      <JokeCueView 
+      <JokeAccuracyView 
+        accuracy={ accuracy }
         onChange={ onChange }
-        updateCueWord={ updateCueWord }
       />
     );
   }
+  
 }

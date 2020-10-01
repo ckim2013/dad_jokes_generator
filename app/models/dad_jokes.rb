@@ -12,7 +12,7 @@ class DadJokes < ApplicationRecord
     end
   end
 
-  def generate_random_joke
+  def generate_random_joke(accuracy:)
     existing_jokes = if cue_word.empty?
                       Rails.cache.fetch('existing_jokes', expires_in: 10.minutes) do
                         DadJokes.order('RANDOM()').limit(100).to_a
@@ -23,6 +23,6 @@ class DadJokes < ApplicationRecord
                       end
                     end
 
-    MarkovGenerator.new(existing_jokes: existing_jokes).generate_random_joke
+    MarkovGenerator.new(existing_jokes: existing_jokes, accuracy: accuracy).generate_random_joke
   end
 end

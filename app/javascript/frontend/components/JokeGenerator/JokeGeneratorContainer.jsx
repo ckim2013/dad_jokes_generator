@@ -7,16 +7,20 @@ export default class JokeGeneratorContainer extends Component {
       super(props);
       
       this.state = {
+        accuracy: '',
         cueWord: '',
         joke: '',
       };
       
-      this.updateCueWord = this.updateCueWord.bind(this);
-      this.updateJoke    = this.updateJoke.bind(this);
+      this.onChange = this.onChange.bind(this);
+      this.updateJoke = this.updateJoke.bind(this);
     }
     
-    updateCueWord(e) {
-      this.setState({ cueWord: e.target.value });
+    onChange(e) {
+      const key = e.target.name;
+      const value = e.target.value;
+      if (key === 'accuracy' && !(/(?<!\S)[1-9](?!\S)/).test(value) && value !== '') return;
+      this.setState({ [key]: value });
     }
     
     updateJoke(newJoke) {
@@ -25,15 +29,17 @@ export default class JokeGeneratorContainer extends Component {
     
     render() {
       const { 
+        accuracy,
         cueWord,
         joke, 
       } = this.state;
       
       return (
         <JokeGeneratorView
+          accuracy={ accuracy }
           cueWord={ cueWord }
           joke={ joke }
-          updateCueWord={ this.updateCueWord }
+          onChange={ this.onChange }
           updateJoke={ this.updateJoke }
         />
       );

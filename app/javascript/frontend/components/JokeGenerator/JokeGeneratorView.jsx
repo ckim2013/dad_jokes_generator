@@ -1,26 +1,33 @@
 import React from 'react';
 
-import JokeDisplay from './JokeDisplayContainer'
-import JokeCue from './JokeCueContainer';
-import JokeGenerate from './JokeGenerateContainer';
 import Disclaimer from './Disclaimer';
+import JokeAccuracy from './JokeAccuracyContainer';
+import JokeCue from './JokeCueContainer';
+import JokeDisplay from './JokeDisplayContainer'
+import JokeGenerate from './JokeGenerateContainer';
 
 const JokeGeneratorView = (props) => {
   const { 
+    accuracy,
     cueWord,
     joke,
-    updateCueWord,
+    onChange,
     updateJoke,
    } = props;
   
   return (
     <div className='container'>
       <div className='title'>Dad Joke Generator</div>
+      <JokeAccuracy 
+        accuracy={ accuracy }
+        onChange={ onChange }
+      />
       <JokeCue
         cueWord={ cueWord }
-        updateCueWord={ updateCueWord }
+        onChange={ onChange }
       />
       <JokeGenerate 
+        accuracy={ accuracy }
         cueWord={ cueWord }
         updateJoke={ updateJoke }
       /> 

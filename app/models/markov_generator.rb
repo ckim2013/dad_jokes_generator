@@ -1,8 +1,9 @@
 class MarkovGenerator
-  ACCURACY = 6.freeze
+  DEFAULT_ACCURACY = 5.freeze
   MAX_LENGTH_OF_JOKE = 200.freeze
 
-  def initialize(existing_jokes:)
+  def initialize(accuracy:, existing_jokes:)
+    @accuracy = accuracy == 0 ? DEFAULT_ACCURACY : accuracy
     @existing_jokes = existing_jokes
     @beginnings = []
     @ngrams = Hash.new([])
@@ -20,10 +21,10 @@ class MarkovGenerator
       joke = existing_joke.joke
       i = 0
 
-      while i <= joke.length - ACCURACY
-        gram = joke[i..i + ACCURACY - 1]
+      while i <= joke.length - @accuracy
+        gram = joke[i..i + @accuracy - 1]
         @beginnings << gram if i == 0
-        @ngrams[gram] += [joke[i + ACCURACY]]
+        @ngrams[gram] += [joke[i + @accuracy]]
 
         i += 1
       end

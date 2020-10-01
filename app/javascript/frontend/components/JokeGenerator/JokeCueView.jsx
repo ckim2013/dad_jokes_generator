@@ -3,15 +3,16 @@ import React from 'react';
 const JokeCueView = (props) => {
   const {
     cueWord,
-    updateCueWord,
+    onChange,
   } = props;
   
   return (
     <div>
       <input 
+        name='cueWord'
+        onChange={ onChange }
         placeholder='Cue Word'
         type='text'
-        onChange={ updateCueWord }
         value={ cueWord }
       />
     </div>  
