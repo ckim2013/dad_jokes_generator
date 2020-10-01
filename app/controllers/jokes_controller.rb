@@ -4,7 +4,7 @@ class JokesController < ApplicationController
     uri = URI(url)
     req = Net::HTTP::Get.new(uri)
     req['Accept'] = 'application/json'
-    res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) { |http| http.request(req) }
+    res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) { |https| https.request(req) }
 
     if params[:cue_word].empty?
       render json: { joke: JSON.parse(res.body)['joke'] }
