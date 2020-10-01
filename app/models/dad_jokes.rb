@@ -14,9 +14,13 @@ class DadJokes < ApplicationRecord
 
   def generate_random_joke
     existing_jokes = if cue_word.empty?
-                      DadJokes.order('RANDOM()').limit(100)
+                      Rails.cache.fetch('existing_jokes', expires_in: 10.minutes) do
+                        DadJokes.order('RANDOM()').limit(100)
+                      end
                     else
-                      DadJokes.where(cue_word: cue_word).order('RANDOM()').limit(100)
+                      Rails.cache.fetch(cue_word, expires_in: 5.minutes) do
+                        DadJokes.where(cue_word: cue_word).order('RANDOM()').limit(100)
+                      end
                     end
 
     MarkovGenerator.new(existing_jokes: existing_jokes).generate_random_joke
