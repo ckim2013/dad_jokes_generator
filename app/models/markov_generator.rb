@@ -1,5 +1,5 @@
 class MarkovGenerator
-  ACCURACY = 5.freeze
+  ACCURACY = 6.freeze
   MAX_LENGTH_OF_JOKE = 200.freeze
 
   def initialize(existing_jokes:)
