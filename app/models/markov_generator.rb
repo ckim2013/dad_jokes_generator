@@ -14,9 +14,7 @@ class MarkovGenerator
 
       while i <= joke.length - ORDER
         gram = joke[i..i + ORDER - 1]
-
         @beginnings << gram if i == 0
-
         @ngrams[gram] += [joke[i + ORDER]]
 
         i += 1
@@ -32,6 +30,7 @@ class MarkovGenerator
       next_character = @ngrams[current_gram].sample
       break unless next_character
       string += next_character
+      
       current_gram = string[i + 1..-1]
     end
 
