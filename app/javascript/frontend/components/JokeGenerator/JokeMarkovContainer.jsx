@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import JokeMarkovView from './JokeMarkovView';
 
@@ -10,7 +11,14 @@ export default class JokeMarkovContainer extends Component {
   }
   
   submitRequest() {
-    this.props.updateJoke('Is Markov working?');
+    const {
+      updateJoke,
+    } = this.props;
+    
+    axios.get('/jokes/send_markov_request')
+      .then(res => {
+        updateJoke(res.data.joke);
+      });
   }
   
   render() {

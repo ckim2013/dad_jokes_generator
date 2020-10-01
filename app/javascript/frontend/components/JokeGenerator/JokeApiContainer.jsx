@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import JokeApiView from './JokeApiView';
 
@@ -10,8 +11,15 @@ export default class JokeApiContainer extends Component {
   }
   
   submitRequest() {
-    this.props.updateJoke('Is API working?');
-  };
+    const {
+      updateJoke,
+    } = this.props;
+    
+    axios.get('/jokes/send_api_request')
+      .then(res => {
+        updateJoke(res.data.joke);
+      });
+  }
 
   render() {
     return (
