@@ -4,7 +4,7 @@ const JokeDisplayView = (props) => {
   const { joke } = props;
   
   return (
-    <div>
+    <div className='joke-display'>
       { joke }
     </div>  
   );

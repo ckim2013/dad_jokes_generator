@@ -6,11 +6,13 @@ const JokeGenerateView = (props) => {
   } = props;
   
   return (
-    <button
-      onClick={ submitRequest }
-    >
-      Generate
-    </button>  
+    <div>
+      <button
+        onClick={ submitRequest }
+      >
+        Generate
+      </button>  
+    </div>
   );
 };
 

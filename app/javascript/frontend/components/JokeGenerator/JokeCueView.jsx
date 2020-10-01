@@ -7,11 +7,13 @@ const JokeCueView = (props) => {
   } = props;
   
   return (
-    <input 
-      type='text'
-      onChange={ updateCueWord }
-      value={ cueWord }
-    />
+    <div>
+      <input 
+        type='text'
+        onChange={ updateCueWord }
+        value={ cueWord }
+      />
+    </div>  
   );
 };
 

@@ -5,7 +5,11 @@ class DadJokes < ApplicationRecord
 
   def self.fetch_and_save_joke!(cue_word:)
     joke = fetch_dad_joke_via_api(cue_word: cue_word)
-    find_or_create_by(joke: joke, cue_word: cue_word)
+    if joke
+      find_or_create_by(joke: joke, cue_word: cue_word)
+    else
+      order('RANDOM()').first
+    end
   end
 
   def generate_random_joke
