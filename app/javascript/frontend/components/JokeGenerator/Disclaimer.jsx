@@ -5,8 +5,7 @@ const Disclaimer = () => {
     <div>
       <ul>
         <li>These dad jokes are generated using Markov chains.</li>
-        <li>The more you use it, the more incoherent the jokes are.</li>
-        <li>The accuracy can be improved by changing the accuracy constant in the backend.</li>
+        <li>The jokes will be more coherent as you raise the accuract (1-9).</li>
         <li>You can input a cue word in the text box for a butchered joke related to the cue word.</li>
         <li>Use with caution!</li>
       </ul>
