@@ -9,6 +9,6 @@ module JokesApi
     req = Net::HTTP::Get.new(uri)
     req['Accept'] = 'application/json'
     res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) { |https| https.request(req) }
-    cue_word.empty? ? JSON.parse(res.body)['joke'] : JSON.parse(res.body)['results'].sample.try([], 'joke')
+    cue_word.empty? ? JSON.parse(res.body)['joke'] : JSON.parse(res.body)['results'].sample.try(:[], 'joke')
   end
 end

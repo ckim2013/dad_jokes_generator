@@ -3,6 +3,7 @@ import React from 'react';
 import JokeDisplay from './JokeDisplayContainer'
 import JokeCue from './JokeCueContainer';
 import JokeGenerate from './JokeGenerateContainer';
+import Disclaimer from './Disclaimer';
 
 const JokeGeneratorView = (props) => {
   const { 
@@ -13,7 +14,7 @@ const JokeGeneratorView = (props) => {
    } = props;
   
   return (
-    <div>
+    <div className='container'>
       <div className='title'>Dad Joke Generator</div>
       <JokeCue
         cueWord={ cueWord }
@@ -26,6 +27,7 @@ const JokeGeneratorView = (props) => {
       <JokeDisplay
         joke={ joke }
       />
+      <Disclaimer />
     </div>
   );
 }

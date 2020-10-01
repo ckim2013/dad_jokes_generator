@@ -3,18 +3,8 @@ html * {
 }
 
 #root {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-
   div {
     padding: 10px;
-    width: 100%;
-  }
-
-  .title {
-    font-size: 30px;
-    padding-bottom: 50px;
   }
 
   button {
@@ -30,5 +20,22 @@ html * {
     border-radius: 5px;
     width: 110px;
     height: 25px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .joke-display {
+    height: 30px;
+    padding-top: 40px;
+  }
+
+  .title {
+    font-size: 30px;
+    padding-bottom: 50px;
   }
 }
