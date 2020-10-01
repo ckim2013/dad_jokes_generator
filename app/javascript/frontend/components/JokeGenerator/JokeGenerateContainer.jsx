@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import JokeMarkovView from './JokeMarkovView';
+import JokeGenerateView from './JokeGenerateView';
 
-export default class JokeMarkovContainer extends Component {
+export default class JokeGenerateContainer extends Component {
   constructor(props) {
     super(props);
     
@@ -12,18 +12,19 @@ export default class JokeMarkovContainer extends Component {
   
   submitRequest() {
     const {
+      cueWord,
       updateJoke,
     } = this.props;
     
-    axios.get('/jokes/send_markov_request')
+    axios.get(`/jokes/generate?cue_word=${ cueWord }`)
       .then(res => {
         updateJoke(res.data.joke);
       });
   }
-  
+
   render() {
     return (
-      <JokeMarkovView 
+      <JokeGenerateView 
         submitRequest={ this.submitRequest }
       />
     );

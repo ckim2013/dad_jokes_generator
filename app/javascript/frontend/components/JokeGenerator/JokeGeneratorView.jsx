@@ -2,8 +2,7 @@ import React from 'react';
 
 import JokeDisplay from './JokeDisplayContainer'
 import JokeCue from './JokeCueContainer';
-import JokeApi from './JokeApiContainer';
-import JokeMarkov from './JokeMarkovContainer';
+import JokeGenerate from './JokeGenerateContainer';
 
 const JokeGeneratorView = (props) => {
   const { 
@@ -22,13 +21,10 @@ const JokeGeneratorView = (props) => {
         cueWord={ cueWord }
         updateCueWord={ updateCueWord }
       />
-      <JokeApi 
+      <JokeGenerate 
         cueWord={ cueWord }
         updateJoke={ updateJoke }
-      />  
-      <JokeMarkov
-        updateJoke={ updateJoke }
-      />
+      /> 
     </div>
   );
 }

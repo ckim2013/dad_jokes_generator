@@ -1,6 +1,6 @@
 import React from 'react';
 
-const JokeApiView = (props) => {
+const JokeGenerateView = (props) => {
   const {
     submitRequest,
   } = props;
@@ -14,4 +14,4 @@ const JokeApiView = (props) => {
   );
 };
 
-export default JokeApiView;
+export default JokeGenerateView;
