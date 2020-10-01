@@ -7,24 +7,33 @@ export default class JokeGeneratorContainer extends Component {
       super(props);
       
       this.state = {
-        joke: 'Why did the chicken cross the road??',
+        cueWord: '',
+        joke:    'Why did the chicken cross the road??',
       };
       
-      this.updateJoke = this.updateJoke.bind(this);
+      this.updateCueWord = this.updateCueWord.bind(this);
+      this.updateJoke    = this.updateJoke.bind(this);
+    }
+    
+    updateCueWord(e) {
+      this.setState({ cueWord: e.target.value });
     }
     
     updateJoke(newJoke) {
       this.setState({ joke: newJoke });
     }
-
+    
     render() {
       const { 
+        cueWord,
         joke, 
       } = this.state;
       
       return (
         <JokeGeneratorView
+          cueWord={ cueWord }
           joke={ joke }
+          updateCueWord={ this.updateCueWord }
           updateJoke={ this.updateJoke }
         />
       );
