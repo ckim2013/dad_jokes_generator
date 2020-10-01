@@ -1,15 +1,23 @@
 class MarkovGenerator
-  ORDER = 1
+  ORDER = 5
   LENGTH_OF_JOKE = 200
 
-  def initialize(jokes:)
-    @jokes = jokes
+  def initialize(existing_jokes:)
+    @existing_jokes = existing_jokes
     @beginnings = []
     @ngrams = Hash.new([])
   end
 
+  def generate_random_joke
+    generate_ngrams
+    generate_string
+  end
+
+  private
+
   def generate_ngrams
-    @jokes.each do |joke|
+    @existing_jokes.each do |existing_joke|
+      joke = existing_joke.joke
       i = 0
 
       while i <= joke.length - ORDER
@@ -22,7 +30,7 @@ class MarkovGenerator
     end
   end
 
-  def generate_joke
+  def generate_string
     current_gram = @beginnings.sample
     string = current_gram
 
@@ -30,7 +38,7 @@ class MarkovGenerator
       next_character = @ngrams[current_gram].sample
       break unless next_character
       string += next_character
-      
+
       current_gram = string[i + 1..-1]
     end
 
