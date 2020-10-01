@@ -12,10 +12,11 @@ export default class JokeApiContainer extends Component {
   
   submitRequest() {
     const {
+      cueWord,
       updateJoke,
     } = this.props;
     
-    axios.get('/jokes/send_api_request')
+    axios.get(`/jokes/send_api_request?cue_word=${ cueWord }`)
       .then(res => {
         updateJoke(res.data.joke);
       });
