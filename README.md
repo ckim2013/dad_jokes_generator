@@ -9,11 +9,12 @@
   - NPM: `6.14.5`
   - React
   - Axios
-  - Postgresql
+  - Postgresql (Need client in order to make this app run)
 
 # Instructions for setup
   - Download the repo
   - `bundle`
+  - `rails db:setup`
   - `npm install`
   - `webpack`
   - `rails s`
