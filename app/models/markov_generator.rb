@@ -2,19 +2,32 @@ class MarkovGenerator
   DEFAULT_ACCURACY = 5.freeze
   MAX_LENGTH_OF_JOKE = 200.freeze
 
-  def initialize(accuracy:, existing_jokes:)
+  def initialize(accuracy:, cue_word:)
     @accuracy = accuracy == 0 ? DEFAULT_ACCURACY : accuracy
-    @existing_jokes = existing_jokes
     @beginnings = []
+    @cue_word = cue_word
     @ngrams = Hash.new([])
   end
 
   def generate_random_joke
+    generate_existing_jokes
     generate_ngrams
     generate_string
   end
 
   private
+
+  def generate_existing_jokes
+    @existing_jokes = if @cue_word.empty?
+                        Rails.cache.fetch('existing_jokes', expires_in: 5.minutes) do
+                          DadJokes.order('RANDOM()').limit(100).to_a
+                        end
+                      else
+                        Rails.cache.fetch(@cue_word, expires_in: 5.minutes) do
+                          DadJokes.where(cue_word: @cue_word).order('RANDOM()').limit(100).to_a
+                        end
+                      end
+  end
 
   def generate_ngrams
     @existing_jokes.each do |existing_joke|
