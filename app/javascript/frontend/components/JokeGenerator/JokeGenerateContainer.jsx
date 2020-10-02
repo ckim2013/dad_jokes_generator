@@ -17,10 +17,21 @@ export default class JokeGenerateContainer extends Component {
       updateJoke,
     } = this.props;
     
-    axios.get(`/jokes/generate?cue_word=${ cueWord }&accuracy=${ accuracy }`)
-      .then(res => {
-        updateJoke(res.data.joke);
-      });
+    const csrfToken = document.querySelector("meta[name=csrf-token]").content;
+    axios.defaults.headers.common['X-CSRF-Token'] = csrfToken;
+    
+    axios.post('/jokes/fetch_from_api', {
+      cue_word: cueWord,
+    })
+    .then(() => {
+      return axios.get(`/jokes/generate/?accuracy=${ accuracy }&cue_word=${ cueWord }`);
+    })
+    .then((res) => {
+      updateJoke(res.data.joke);
+    })
+    .catch((res) => {
+      updateJoke(res.response.data.error);
+    });
   }
 
   render() {

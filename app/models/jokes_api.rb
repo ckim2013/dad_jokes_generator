@@ -1,9 +1,7 @@
-module JokesApi
+class JokesApi
   URL = 'https://icanhazdadjoke.com'.freeze
 
-  private
-
-  def fetch_dad_joke_via_api(cue_word:)
+  def self.fetch_joke(cue_word:)
     url = cue_word.empty? ? URL : "#{ URL }/search?term=#{ cue_word }"
     uri = URI(url)
     req = Net::HTTP::Get.new(uri)
