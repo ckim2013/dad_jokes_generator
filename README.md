@@ -1,7 +1,7 @@
 # Dad Joke Generator using Markov Chains
   The jokes presented to the user are created using Markov chains. This generator uses the `icanhazdadjoke` API to fetch real dad jokes. With these jokes, the app generates ngrams depending on the accuracy level set by the user. The coherence of the jokes depends on the accuracy level but even then this is not perfect. The user is also able to input a "cue word" that will generate a joke related to that cue word.
 
-  [live](dadjokes.ckim.me)
+  [live](https://dadjokes.ckim.me)
 
 # Tech Used
   - Rails: `6.0.3.3`
