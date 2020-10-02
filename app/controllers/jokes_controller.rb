@@ -9,8 +9,11 @@ class JokesController < ApplicationController
       )
       head(:ok)
     else
-      render json: { error: 'Either something went wrong or your cue word aint english.' }, status: 422
+      render json: { error: 'Your cue word aint english.' }, status: 422
     end
+
+    rescue
+      render json: { error: 'Oops, something went wrong!' }, status: 422
   end
 
   def generate
