@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+fetched_jokes = []
+(1..22).each { |page| fetched_jokes += JokesApi.fetch_jokes(page: page) }
+DadJokes.create(fetched_jokes)

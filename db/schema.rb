@@ -10,15 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_01_043920) do
+ActiveRecord::Schema.define(version: 2020_10_06_015315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "dad_jokes", force: :cascade do |t|
     t.string "joke"
-    t.string "cue_word"
-    t.index ["cue_word", "joke"], name: "index_dad_jokes_on_cue_word_and_joke", unique: true
   end
 
 end
