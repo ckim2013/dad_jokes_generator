@@ -1,9 +1,9 @@
 class MarkovGenerator
-  DEFAULT_ACCURACY = 6.freeze
-  MAX_LENGTH_OF_JOKE = 200.freeze
-  LIMIT_SIZE = 200.freeze
   CACHE_EXPIRATION_MINUTES = 5.freeze
+  DEFAULT_ACCURACY = 6.freeze
   EXISTING_JOKES = 'existing_jokes'.freeze
+  LIMIT_SIZE = 200.freeze
+  MAX_LENGTH_OF_JOKE = 200.freeze
   VARIETY_LIMIT = 5.freeze
 
   def initialize(accuracy:, cue_word:)
