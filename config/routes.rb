@@ -3,5 +3,4 @@ Rails.application.routes.draw do
   root to: 'static_pages#root'
 
   get '/jokes/generate', to: 'jokes#generate'
-  post '/jokes/fetch_from_api', to: 'jokes#fetch_from_api'
 end

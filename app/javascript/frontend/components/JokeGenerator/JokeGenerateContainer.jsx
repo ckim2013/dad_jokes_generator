@@ -20,18 +20,13 @@ export default class JokeGenerateContainer extends Component {
     const csrfToken = document.querySelector("meta[name=csrf-token]").content;
     axios.defaults.headers.common['X-CSRF-Token'] = csrfToken;
     
-    axios.post('/jokes/fetch_from_api', {
-      cue_word: cueWord,
-    })
-    .then(() => {
-      return axios.get(`/jokes/generate/?accuracy=${ accuracy }&cue_word=${ cueWord }`);
-    })
-    .then((res) => {
-      updateJoke(res.data.joke);
-    })
-    .catch((res) => {
-      updateJoke(res.response.data.error);
-    });
+    axios.get(`/jokes/generate/?accuracy=${ accuracy }&cue_word=${ cueWord }`)
+      .then((res) => {
+        updateJoke(res.data.joke);
+      })
+      .catch((res) => {
+        updateJoke(res.response.data.error);
+      });
   }
 
   render() {

@@ -1,7 +1,7 @@
 class MarkovGenerator
   DEFAULT_ACCURACY = 5.freeze
   MAX_LENGTH_OF_JOKE = 200.freeze
-  LIMIT_SIZE = 100.freeze
+  LIMIT_SIZE = 200.freeze
   CACHE_EXPIRATION_MINUTES = 5.freeze
   EXISTING_JOKES = 'existing_jokes'.freeze
 
@@ -27,7 +27,7 @@ class MarkovGenerator
                         end
                       else
                         Rails.cache.fetch(@cue_word, expires_in: CACHE_EXPIRATION_MINUTES.minutes) do
-                          DadJokes.where(cue_word: @cue_word).order('RANDOM()').limit(LIMIT_SIZE).to_a
+                          DadJokes.where('joke ILIKE ?', "%#{@cue_word}%").order('RANDOM()').limit(LIMIT_SIZE).to_a
                         end
                       end
   end
