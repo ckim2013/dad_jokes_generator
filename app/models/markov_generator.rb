@@ -27,7 +27,8 @@ class MarkovGenerator
                         end
                       else
                         Rails.cache.fetch(@cue_word, expires_in: CACHE_EXPIRATION_MINUTES.minutes) do
-                          DadJokes.where('joke ILIKE ?', "%#{@cue_word}%").order('RANDOM()').limit(LIMIT_SIZE).to_a
+                          cue_word_jokes = DadJokes.where('joke ILIKE ?', "%#{@cue_word}%").order('RANDOM()').limit(LIMIT_SIZE)
+                          cue_word_jokes + DadJokes.order('RANDOM()').limit(5)
                         end
                       end
   end
